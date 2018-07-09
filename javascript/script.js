@@ -36,7 +36,25 @@ function swap(arr, i1, j1, i2, j2) {
 	arr[i2][j2] = t;
 };
 
-function cellClick () {};
+function cellClick (e) {
+	var el = e.srcElement || e.target;
+	var i = el.id.charAt(0);
+	var j = el.id.charAt(2);  // Получили координаты нажатой костяшки.
+
+	// будем менять костяшки местами с пустышкой.
+
+	// Проверяем, если комбинация выигрышная.
+	var q = true;
+	for (i = 1; i <=4 ; i++) {
+		for (j = 0; j <=4; j++) {
+			if( i + j != 8 &amp;&amp; document.getElementById(i+" "+ j).textContent != 4*(i-1) +j) {
+				q = false;
+				break;
+			};
+		};
+	if(q) alert('Victory!');	
+	};
+};
 
 function newGame() {
 	ei = 4; // Запоминаем индексы (координаты) пустышки
